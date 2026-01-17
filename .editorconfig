@@ -1,0 +1,18 @@
+# .editorconfig
+# I added this im that one peep on a team who uses 2 spaces (or tabs!) from messing up the Python indentation. 
+# It tells VS Code and PyCharm how to behave automaticaly. we all have one n the team.
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.bat]
+end_of_line = crlf
+
+[*.lua]
+indent_size = 2
