@@ -75,7 +75,6 @@ The tool runs a "Scan Mode" by default. It fires opcodes `0x00` through `0xFF` a
 * **Wireshark**
   Not strictly required to run the scan, but if you’re doing protocol RE without it, you’re choosing unnecessary pain.
 
-
 ## Quick start
 
 1. Power the device and connect to its WiFi AP if required.
