@@ -31,6 +31,44 @@ It keeps the socket alive, manages retries, absorbs malformed packets, and avoid
 * **`run_windows.bat`**
   Convenience script for Windows users. No ceremony.
 
+  -------
+  ## What is included
+
+*   **`drone_tool.py`**: The logic. It handles the `asyncio` loop, packet queueing and CSV logging. It is written defensively as I don't trust network buffers.
+*   **`drone_protocol.lua`**: A Wireshark dissector. Staring at raw hex bytes in the "Data" pane is difficult. This makes Wireshark understand the packets.
+*   **`launcher.py`**: A wrapper script. It installs the Lua plugin and prompts for the IP address so you don't have to edit the code to change a target.
+*   **`run_windows.bat`**: A script for Windows users to launch the tool easily.
+*   **`run_unix.sh`**: A wrapper for Linux and macOS users.
+
+## Requirements
+
+*   **Python 3.8+**. I stuck to the standard library (`asyncio`, `struct`, `socket`) to avoid dependency hell. `pip` installs can be unreliable on some field laptops.
+*   **Wireshark**. You don't strictly need it to run the scan, but if you are doing RE work without it you are making life difficult for yourself. just run it.
+
+## Quick Start
+
+1.  Plug in the device. Connect to its WiFi AP if needed.
+
+2.  **Windows Users**:
+    *   Double-click `run_windows.bat`.
+
+3.  **Linux / Mac Users**:
+    *   You must make the script executable first. Open a terminal and run:
+        ```bash
+        chmod +x run_unix.sh
+        ```
+    *   Then launch it:
+        ```bash
+        ./run_unix.sh
+        ```
+
+4.  Enter the IP and Port when prompted.
+    *   *Common default: 192.168.10.1 port 8889.*
+
+5.  Watch the logs.
+
+The tool runs a "Scan Mode" by default. It fires opcodes `0x00` through `0xFF` at the target and records the response to a CSV file.
+
 ## Requirements
 
 * **Python 3.8+**
@@ -51,16 +89,16 @@ By default the tool runs in **Scan Mode**. It iterates opcodes `0x00` through `0
 
 ## Design decisions
 
-The code is deliberately verbose. That’s intentional.
+The code is deliberately verbose. That’s just my style with this one.
 
 * **Explicit state**
-  No clever one-liners. When you’re debugging a protocol that depends on a checksum calculated over a specific byte range, it matters that you can see exactly where that range begins and ends.
+  When you’re debugging a protocol that depends on a checksum calculated over a specific byte range, it matters that you can see exactly where that range begins and ends.
 
 * **The queue**
   UDP is not a stream. It’s a pile of discrete messages. An `asyncio.Queue` decouples reception from processing so packets aren’t dropped while data is being written to disk.
 
 * **Strict typing**
-  Type hints are used throughout. Future-you will appreciate being reminded that `payload` is `bytes`, not a `str`, six months down the line.
+  Type hints are used throughout. Future-you will appreciate being reminded that `payload` is `bytes`, not a `str`, six months down the line. i did this so I can work it out afrer leaving a project half done.
 
 ## Liability
 
