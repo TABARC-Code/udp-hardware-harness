@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Scan Results and Logs
+*.csv
+*.log
+*.pcap
+*.pcapng
+
+# OS junk
+.DS_Store
+Thumbs.db
