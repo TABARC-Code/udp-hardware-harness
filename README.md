@@ -68,7 +68,11 @@ Be careful what you send.
 
 If you transmit a command that tells a drone to cut its motors at altitude, that outcome is on you. This tool does not enforce safety. It sends byte info , data infp.
 
-Use common sense. If you’re testing on a desk, remove the propellers.
+Use common sense. If you’re testing on a desk, remove the propellers. dont ask...
+
+## Testing
+
+There are no unit tests yet. Mocking `asyncio.DatagramTransport` is difficult and I haven't had time to set it up properly.
 
 ## Licence
 
