@@ -66,7 +66,7 @@ The code is deliberately verbose. That’s intentional.
 
 Be careful what you send.
 
-If you transmit a command that tells a drone to cut its motors at altitude, that outcome is on you. This tool does not enforce safety. It sends bytes.
+If you transmit a command that tells a drone to cut its motors at altitude, that outcome is on you. This tool does not enforce safety. It sends byte info , data infp.
 
 Use common sense. If you’re testing on a desk, remove the propellers.
 
