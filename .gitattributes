@@ -1,0 +1,17 @@
+# .gitattributes
+# Auto-detect text files and perform LF normalization
+# This forces Git to treat shell scripts as Linux files (LF) 
+# and batch files as Windows files (CRLF), regardless of who is editing them.
+* text=auto
+
+# Windows scripts must always have CRLF
+*.bat text eol=crlf
+
+# Linux/Mac scripts must always have LF
+*.sh text eol=lf
+*.lua text
+*.py text
+
+# Binary files - do not touch them
+*.pcap binary
+*.pcapng binary
