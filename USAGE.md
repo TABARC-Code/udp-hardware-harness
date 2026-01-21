@@ -17,6 +17,32 @@ The tool is split into three layers. That separation is deliberate. UDP transpor
 3. **Scanner**
    This is the application logic. It iterates through opcode values, sends requests, records responses, and writes the CSV. It does very little thinking, by design.
 
+## Usage ##
+
+####1. UDP Drone Scanning####
+
+* **python hardware_tool.py udp --ip 192.168.10.1 --scan**
+
+####2. Bluetooth Walking####
+
+* **python hardware_tool.py ble --mac AA:BB:CC:11:22:33 --scan** 
+
+####3. Serial Auto-Baud####
+
+---------
+
+# Windows
+python hardware_tool.py serial --port COM3 --auto-baud
+
+# Linux
+python hardware_tool.py serial --port /dev/ttyUSB0 --auto-baud
+
+4. TCP Proxy
+Listen on local port 8888, forward to remote server 1.2.3.4 port 80.
+
+python hardware_tool.py tcp --local-port 8888 --remote-ip 1.2.3.4 --remote-port 80
+Then configure your device (via DNS spoofing or config change) to connect to your IP.  
+
 ## The CSV output
 
 A scan produces `drone_scan.csv`. Open it in a spreadsheet and start filtering. You’re looking for patterns, not individual rows.
@@ -81,7 +107,7 @@ You will almost certainly need to change the protocol definition. Manufacturers 
 
 Open `drone_tool.py` and find `class DroneProtocol`.
 
-Common changes:
+##### Common changes: #####
 
 * **Header**
   Update `HEADER = 0x55` to match the device’s sync byte or magic value.
