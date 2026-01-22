@@ -19,15 +19,26 @@ The tool is split into three layers. That separation is deliberate. UDP transpor
 
 ## Usage ##
 
-####1. UDP Drone Scanning####
+#### 1. UDP Drone Scanning ####
+* python hardware_tool.py udp --ip 192.168.10.1 --scan
 
-* **python hardware_tool.py udp --ip 192.168.10.1 --scan**
+#### 2. Bluetooth Walking ####
+*python hardware_tool.py ble --mac AA:BB:CC:11:22:33 --scan
 
-####2. Bluetooth Walking####
+#### 3. Serial Auto-Baud ####
 
-* **python hardware_tool.py ble --mac AA:BB:CC:11:22:33 --scan** 
+* Windows
+python hardware_tool.py serial --port COM3 --auto-baud
 
-####3. Serial Auto-Baud####
+* Linux
+python hardware_tool.py serial --port /dev/ttyUSB0 --auto-baud
+
+#### 4. TCP Proxy ####
+Listen on local port 8888, forward to remote server 1.2.3.4 port 80.
+
+* python hardware_tool.py tcp --local-port 8888 --remote-ip 1.2.3.4 --remote-port 80
+
+* Then configure your device (via DNS spoofing or config change) to connect to your IP.
 
 ---------
 
