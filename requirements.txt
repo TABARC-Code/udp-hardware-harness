@@ -1,2 +1,8 @@
-# Standard library only.
-# No 3rd party modules required for core functionality.
+# In basic Version Standard library only.
+# Standard library only for the core tool.
+
+
+# Visualisation extras:
+dash>=2.14.0
+pandas>=2.0.0
+plotly>=5.17.0
